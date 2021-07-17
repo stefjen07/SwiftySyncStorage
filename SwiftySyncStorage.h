@@ -1,6 +1,8 @@
 #ifndef SWIFTY_SYNC_STORAGE
 #define SWIFTY_SYNC_STORAGE
 
+#include "Usage.h"
+
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
 #define AUTH_PREFIX "A"
@@ -15,11 +17,12 @@
 #define DATA_REQUEST_FAILURE "DRF"
 #define DOCUMENT_EXTENSION "document"
 
-#include <string>
-#include <functional>
-#include <experimental/filesystem>
 #include <Codable.h>
 #include <JSON.h>
+#include <string>
+#include <functional>
+#include <fstream>
+#include <experimental/filesystem>
 
 namespace fs = std::experimental::filesystem;
 using namespace std;
@@ -123,6 +126,8 @@ public:
 	}
 };
 
+class SwiftyServer;
+
 class Collection {
 public:
 	string name;
@@ -174,9 +179,6 @@ public:
 };
 
 #ifdef SERVER
-string Collection::collectionUrl() {
-	return server->serverUrl + name + "/";
-}
 
 void Collection::save() {
 	if (name.empty()) {
