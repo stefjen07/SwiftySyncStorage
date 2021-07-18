@@ -18,5 +18,16 @@
     <ClInclude Include="SwiftySyncStorage.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Request.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Usage.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

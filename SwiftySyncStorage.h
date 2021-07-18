@@ -1,7 +1,7 @@
 #ifndef SWIFTY_SYNC_STORAGE
 #define SWIFTY_SYNC_STORAGE
 
-#include "Usage.h"
+#include <Usage.h>
 
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
