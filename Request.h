@@ -17,7 +17,7 @@ enum class RequestType {
 class Request {
 public:
 	RequestType type;
-	ConnectionData connection;
+	ConnectionData* connection;
 	virtual void nothing() {};
 };
 
