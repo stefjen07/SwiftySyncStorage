@@ -59,15 +59,16 @@ public:
 	void encode(CoderContainer* container) {
 		if (container->type == CoderType::json) {
 			JSONEncodeContainer* jsonContainer = dynamic_cast<JSONEncodeContainer*>(container);
-			jsonContainer->encode(int(type), name + "type");
+			jsonContainer->encode(int(type), "type");
+			jsonContainer->encode(name, "name");
 			if (type == FieldType::array) {
-				jsonContainer->encode(children, name);
+				jsonContainer->encode(children, "value");
 			}
 			else if (type == FieldType::string) {
-				jsonContainer->encode(strValue, name);
+				jsonContainer->encode(strValue, "value");
 			}
 			else if (type == FieldType::number) {
-				jsonContainer->encode(numValue, name);
+				jsonContainer->encode(numValue, "value");
 			}
 		}
 	}
@@ -75,15 +76,16 @@ public:
 	void decode(CoderContainer* container) {
 		if (container->type == CoderType::json) {
 			JSONDecodeContainer* jsonContainer = dynamic_cast<JSONDecodeContainer*>(container);
-			type = FieldType(jsonContainer->decode(int(), name + "type"));
+			type = FieldType(jsonContainer->decode(int(), "type"));
+			name = jsonContainer->decode(string(), "name");
 			if (type == FieldType::array) {
-				children = jsonContainer->decode(vector<Field>(), name);
+				children = jsonContainer->decode(vector<Field>(), "value");
 			}
 			else if (type == FieldType::string) {
-				strValue = jsonContainer->decode(string(), name);
+				strValue = jsonContainer->decode(string(), "value");
 			}
 			else if (type == FieldType::number) {
-				numValue = jsonContainer->decode(double(), name);
+				numValue = jsonContainer->decode(double(), "value");
 			}
 		}
 	}
