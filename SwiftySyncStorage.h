@@ -28,16 +28,19 @@ namespace fs = std::experimental::filesystem;
 using namespace std;
 
 enum class FieldType {
-	array = 0,
+	boolean = 0,
 	number,
-	string
+	floatingPoint,
+	string,
+	array
 };
 
 class Field : public Codable {
 public:
 	FieldType type;
 	string name;
-	double numValue;
+	long long numValue;
+	double floatValue;
 	string strValue;
 	vector<Field> children;
 
@@ -70,6 +73,12 @@ public:
 			else if (type == FieldType::number) {
 				jsonContainer->encode(numValue, "value");
 			}
+			else if (type == FieldType::boolean) {
+				jsonContainer->encode(numValue == 1, "value");
+			}
+			else if (type == FieldType::floatingPoint) {
+				jsonContainer->encode(floatValue, "value");
+			}
 		}
 	}
 
@@ -85,7 +94,13 @@ public:
 				strValue = jsonContainer->decode(string(), "value");
 			}
 			else if (type == FieldType::number) {
-				numValue = jsonContainer->decode(double(), "value");
+				numValue = jsonContainer->decode(0LL, "value");
+			}
+			else if (type == FieldType::boolean) {
+				numValue = jsonContainer->decode(bool(), "value");
+			}
+			else if (type == FieldType::floatingPoint) {
+				floatValue = jsonContainer->decode(double(), "value");
 			}
 		}
 	}
