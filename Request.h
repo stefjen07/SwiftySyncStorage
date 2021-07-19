@@ -47,6 +47,12 @@ public:
 		}
 	}
 
+	DataRequest(string collectionName, string documentName, string body) {
+		this->collectionName = collectionName;
+		this->documentName = documentName;
+		this->body = body;
+	}
+
 	DataRequest() {}
 };
 
@@ -70,6 +76,13 @@ public:
 			path = jsonContainer->decode(vector<string>(), "path");
 		}
 	}
+
+	FieldRequest(string value, vector<string> path) {
+		this->value = value;
+		this->path = path;
+	}
+
+	FieldRequest() {}
 };
 
 const vector<RequestType> DATA_REQUEST_TYPES = { RequestType::documentSet, RequestType::documentGet, RequestType::fieldSet, RequestType::fieldGet };

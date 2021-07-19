@@ -176,6 +176,12 @@ public:
 		this->server = server;
 	}
 #endif
+
+#ifdef CLIENT
+	Collection(string name) {
+		this->name = name;
+	}
+#endif
 };
 
 #ifdef SERVER

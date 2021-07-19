@@ -10,10 +10,10 @@ Error while authorizing with provider ( E )
 #### Facebook Auth ( F )
 #### Google Auth ( G )
 
-## Data Request ( R + DR )
+## Request ( R )
 ### Common:
 Failure ( DRF )
-Success Prefix ( R + DR )
+Success Prefix ( DR )
 ### Subs:
 #### Document Get ( DG )
 #### Document Set ( DS ) :
