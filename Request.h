@@ -3,6 +3,7 @@
 
 #include <Codable.h>
 #include <JSON.h>
+#include <Helper.h>
 
 class ConnectionData;
 
@@ -23,6 +24,7 @@ public:
 
 class DataRequest : public Request, public Codable {
 public:
+	string id;
 	string collectionName;
 	string documentName;
 	string body;
@@ -35,6 +37,7 @@ public:
 			jsonContainer->encode(collectionName, "collection");
 			jsonContainer->encode(documentName, "document");
 			jsonContainer->encode(body, "body");
+			jsonContainer->encode(id, "id");
 		}
 	}
 
@@ -44,6 +47,7 @@ public:
 			collectionName = jsonContainer->decode(string(), "collection");
 			documentName = jsonContainer->decode(string(), "document");
 			body = jsonContainer->decode(string(), "body");
+			id = jsonContainer->decode(string(), "id");
 		}
 	}
 
@@ -51,9 +55,12 @@ public:
 		this->collectionName = collectionName;
 		this->documentName = documentName;
 		this->body = body;
+		this->id = create_uuid();
 	}
 
-	DataRequest() {}
+	DataRequest() {
+		this->id = create_uuid();
+	}
 };
 
 class FieldRequest : public Codable {
