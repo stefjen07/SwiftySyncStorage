@@ -1,6 +1,8 @@
 #ifndef HELPER_H
 #define HELPER_H
 
+#define UUID_SIZE 36
+
 string create_uuid() {
     const char* v = "0123456789abcdef";
     const bool dash[] = { 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 };
