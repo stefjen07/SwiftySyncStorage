@@ -3,6 +3,7 @@
 
 #include <Codable.h>
 #include <JSON.h>
+#include <Data.h>
 #include <Helper.h>
 
 class ConnectionData;
@@ -90,6 +91,35 @@ public:
 	}
 
 	FieldRequest() {}
+};
+
+class FunctionRequest : public Request, public Codable {
+public:
+	string name;
+	DataUnit inputData;
+
+	void encode(CoderContainer* container) {
+		if (container->type == CoderType::json) {
+			JSONEncodeContainer* jsonContainer = dynamic_cast<JSONEncodeContainer*>(container);
+			jsonContainer->encode(name, "name");
+			jsonContainer->encode(inputData, "input");
+		}
+	}
+
+	void decode(CoderContainer* container) {
+		if (container->type == CoderType::json) {
+			JSONDecodeContainer* jsonContainer = dynamic_cast<JSONDecodeContainer*>(container);
+			name = jsonContainer->decode(string(), "name");
+			inputData = jsonContainer->decode(DataUnit(), "input");
+		}
+	}
+
+	FunctionRequest(string name, DataUnit input) {
+		this->name = name;
+		this->inputData = input;
+	}
+
+	FunctionRequest() {}
 };
 
 const vector<RequestType> DATA_REQUEST_TYPES = { RequestType::documentSet, RequestType::documentGet, RequestType::fieldSet, RequestType::fieldGet };
