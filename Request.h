@@ -13,6 +13,7 @@ enum class RequestType {
 	documentGet,
 	fieldSet,
 	fieldGet,
+	function,
 	undefined
 };
 
