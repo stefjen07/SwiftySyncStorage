@@ -120,9 +120,12 @@ public:
 	FunctionRequest(string name, DataUnit input) {
 		this->name = name;
 		this->inputData = input;
+		this->id = create_uuid();
 	}
 
-	FunctionRequest() {}
+	FunctionRequest() {
+		this->id = create_uuid();
+	}
 };
 
 const vector<RequestType> DATA_REQUEST_TYPES = { RequestType::documentSet, RequestType::documentGet, RequestType::fieldSet, RequestType::fieldGet };
