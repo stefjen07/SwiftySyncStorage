@@ -15,6 +15,7 @@
 #define DATA_SET_SUCCESSFUL "DSS"
 #define FIELD_SET_SUCCESSFUL "FSS"
 #define DATA_REQUEST_FAILURE "DRF"
+#define FUNCTION_REQUEST_PREFIX "FR"
 #define DOCUMENT_EXTENSION "document"
 
 #include <Codable.h>
