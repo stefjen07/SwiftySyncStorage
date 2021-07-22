@@ -19,6 +19,7 @@ enum class RequestType {
 
 class Request {
 public:
+	string id;
 	RequestType type;
 	ConnectionData* connection;
 	virtual void nothing() {};
@@ -26,7 +27,6 @@ public:
 
 class DataRequest : public Request, public Codable {
 public:
-	string id;
 	string collectionName;
 	string documentName;
 	string body;
@@ -104,6 +104,7 @@ public:
 			JSONEncodeContainer* jsonContainer = dynamic_cast<JSONEncodeContainer*>(container);
 			jsonContainer->encode(name, "name");
 			jsonContainer->encode(inputData, "input");
+			jsonContainer->encode(id, "id");
 		}
 	}
 
@@ -112,6 +113,7 @@ public:
 			JSONDecodeContainer* jsonContainer = dynamic_cast<JSONDecodeContainer*>(container);
 			name = jsonContainer->decode(string(), "name");
 			inputData = jsonContainer->decode(DataUnit(), "input");
+			id = jsonContainer->decode(string(), "id");
 		}
 	}
 

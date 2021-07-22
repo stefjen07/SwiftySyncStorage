@@ -1,11 +1,17 @@
-#pragma once
+#ifndef DATA_H
+#define DATA_H
+
+#include "Codable.h"
+#include "JSON.h"
 #include <vector>
+
+typedef char dataByte;
 
 using namespace std;
 
 class DataUnit: public Codable {
 public:
-	vector<byte> bytes;
+	vector<dataByte> bytes;
 
 	void encode(CoderContainer* container) {
 		if (container->type == CoderType::json) {
@@ -17,7 +23,7 @@ public:
 	void decode(CoderContainer* container) {
 		if (container->type == CoderType::json) {
 			JSONDecodeContainer* jsonContainer = dynamic_cast<JSONDecodeContainer*>(container);
-			bytes = jsonContainer->decode(vector<byte>(), "bytes");
+			bytes = jsonContainer->decode(vector<dataByte>(), "bytes");
 		}
 	}
 
@@ -27,3 +33,4 @@ public:
 
 	DataUnit() {}
 };
+#endif
