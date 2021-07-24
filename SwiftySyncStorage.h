@@ -1,8 +1,9 @@
 #ifndef SWIFTY_SYNC_STORAGE
 #define SWIFTY_SYNC_STORAGE
 
-#include <Usage.h>
+#include "Usage.h"
 
+#define _LIBCPP_NO_EXPERIMENTAL_DEPRECATION_WARNING_FILESYSTEM
 #define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 
 #define AUTH_PREFIX "A"
@@ -18,8 +19,8 @@
 #define FUNCTION_REQUEST_PREFIX "FR"
 #define DOCUMENT_EXTENSION "document"
 
-#include <Codable.h>
-#include <JSON.h>
+#include "Codable.h"
+#include "JSON.h"
 #include <string>
 #include <functional>
 #include <fstream>
@@ -247,6 +248,12 @@ void Collection::read() {
 	for (int i = 0; i < documents.size(); i++) {
 		documents[i].read();
 	}
+}
+#endif
+
+#ifndef SERVER
+void Collection::save() {
+    return;
 }
 #endif
 

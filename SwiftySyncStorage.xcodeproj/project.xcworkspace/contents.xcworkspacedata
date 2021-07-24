@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../SwiftySyncCommon/Data.h">
+   </FileRef>
+   <FileRef
+      location = "group:../SwiftySyncCommon/Functions.h">
+   </FileRef>
+   <FileRef
+      location = "group:../SwiftySyncCommon/Request.h">
+   </FileRef>
+   <FileRef
+      location = "group:../SwiftySyncCommon/UUID.h">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

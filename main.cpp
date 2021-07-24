@@ -1,12 +1,12 @@
-#include <SwiftySyncStorage.h>
-#include <Request.h>
-#include <Data.h>
+#define CLIENT
+
+#include "SwiftySyncStorage.h"
 #include <iostream>
 using namespace std;
 
 int main() {
-	FunctionRequest request;
-	DataUnit input;
+    auto col = Collection("hello");
+    col.createDocument("hallo");
 	cout << "Hello, world!";
 	return 0;
 }

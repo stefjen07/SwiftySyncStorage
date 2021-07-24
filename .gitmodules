@@ -2,3 +2,6 @@
 	path = CodablePP
 	url = https://github.com/stefjen07/CodablePP.git
 	branch = main
+[submodule "SwiftySyncCommon"]
+	path = SwiftySyncCommon
+	url = https://github.com/stefjen07/SwiftySyncCommon.git
