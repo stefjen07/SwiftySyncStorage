@@ -5,3 +5,4 @@
 [submodule "SwiftySyncCommon"]
 	path = SwiftySyncCommon
 	url = https://github.com/stefjen07/SwiftySyncCommon.git
+	branch = main
