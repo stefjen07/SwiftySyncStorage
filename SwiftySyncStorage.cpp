@@ -147,4 +147,20 @@ void Collection::read() {
 void Collection::save() {
     return;
 }
+
+string Document::documentUrl() {
+    return "";
+}
+
+void Document::read() {
+    return;
+}
+
+void Document::save() {
+    return;
+}
+
+void Collection::read() {
+    return;
+}
 #endif
