@@ -29,100 +29,98 @@
 namespace fs = std::experimental::filesystem;
 using namespace std;
 
-namespace SwiftyStorage {
-    enum class FieldType {
-        boolean = 0,
-        number,
-        floatingPoint,
-        string,
-        array
-    };
+enum class FieldType {
+	boolean = 0,
+	number,
+	floatingPoint,
+	string,
+	array
+};
 
-    class Field : public Codable {
-    public:
-        FieldType type;
-        string name;
-        long long numValue;
-        double floatValue;
-        string strValue;
-        vector<Field> children;
+class Field : public Codable {
+public:
+	FieldType type;
+	string name;
+	long long numValue;
+	double floatValue;
+	string strValue;
+	vector<Field> children;
 
-        Field* operator [](string key);
+	Field* operator [](string key);
 
-        void addChild(Field child);
+	void addChild(Field child);
 
-        void encode(CoderContainer* container);
+	void encode(CoderContainer* container);
 
-        void decode(CoderContainer* container);
+	void decode(CoderContainer* container);
 
-        Field() {}
+	Field() {}
 
-        Field(FieldType type, string name) {
-            this->type = type;
-            this->name = name;
-        }
-    };
+	Field(FieldType type, string name) {
+		this->type = type;
+		this->name = name;
+	}
+};
 
-    class Collection;
+class Collection;
 
-    class Document {
-    public:
-        string name;
-        vector<Field> fields;
-        Collection* collection;
+class Document {
+public:
+	string name;
+	vector<Field> fields;
+	Collection* collection;
 
-        string documentUrl();
+	string documentUrl();
 
-        Field* operator [](string name);
+	Field* operator [](string name);
 
-        void read();
-        void save();
+	void read();
+	void save();
 
-        Document(Collection* collection, string name) {
-            this->name = name;
-            this->collection = collection;
-        }
+	Document(Collection* collection, string name) {
+		this->name = name;
+		this->collection = collection;
+	}
 
-        Document() {
+	Document() {
 
-        }
-    };
+	}
+};
 
-    class SwiftyServer;
+class SwiftyServer;
 
-    class Collection {
-    public:
-        string name;
-        vector<Document> documents;
-    #ifdef SERVER
-        SwiftyServer* server;
-    #endif
+class Collection {
+public:
+	string name;
+	vector<Document> documents;
+#ifdef SERVER
+	SwiftyServer* server;
+#endif
 
-        string collectionUrl();
+	string collectionUrl();
 
-        function<void()> onDocumentCreating = []() {};
+	function<void()> onDocumentCreating = []() {};
 
-        Document* operator [](string name);
+	Document* operator [](string name);
 
-        bool isDocumentNameTaken(string name);
+	bool isDocumentNameTaken(string name);
 
-        void read();
-        void save();
-        void createDocument(string name);
+	void read();
+	void save();
+	void createDocument(string name);
 
-    #ifdef SERVER
-        Collection(SwiftyServer* server, string name) {
-            this->name = name;
-            this->server = server;
-        }
-    #endif
+#ifdef SERVER
+	Collection(SwiftyServer* server, string name) {
+		this->name = name;
+		this->server = server;
+	}
+#endif
 
-    #ifdef CLIENT
-        Collection(string name) {
-            this->name = name;
-        }
-    #endif
-    };
-}
+#ifdef CLIENT
+	Collection(string name) {
+		this->name = name;
+	}
+#endif
+};
 
 #endif
