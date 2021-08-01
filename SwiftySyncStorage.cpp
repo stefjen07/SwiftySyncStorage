@@ -1,4 +1,5 @@
 #include "SwiftySyncStorage.h"
+#include <iostream>
 
 Field* Field::operator [](string key) {
     for (int i = 0; i < children.size(); i++) {
@@ -134,6 +135,10 @@ void Document::save() {
 
 void Collection::read() {
 	string url = collectionUrl();
+	if (!fs::exists(url)) {
+	    cout << url << "doesn't exist\n";
+	    return;
+	}
 	for (auto& entry : fs::directory_iterator(url)) {
 		string filename = entry.path().stem().string();
 		createDocument(filename);
