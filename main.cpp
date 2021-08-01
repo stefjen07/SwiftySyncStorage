@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 #ifdef CLIENT
-    auto col = Collection("hello");
+    auto col = SwiftyStorage::Collection("hello");
     col.createDocument("hallo");
 #endif
 	cout << "Hello, world!";
