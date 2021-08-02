@@ -33,7 +33,7 @@ extern "C" {
     void decode(struct CField* field, const char* content);
 
     struct CField* CField_empty();
-    struct CField* CField_new(enum CFieldType type, char* name);
+    struct CField* CField_new(enum CFieldType type, const char* name);
 
 #ifdef __cplusplus
 }

@@ -1,7 +1,7 @@
 #include "c_api_storage.h"
 #include "c_api_storage_helper.h"
 #include "SwiftySyncStorage.h"
-#include <malloc.h>
+#include <stdlib.h>
 
 void free(CField* field) {
     free(field->name);
@@ -83,10 +83,10 @@ extern "C" {
         return p;
     }
 
-    struct CField* CField_new(CFieldType type, char* name) {
+    struct CField* CField_new(CFieldType type, const char* name) {
         CField* p = new CField();
         p->type = type;
-        p->name = name;
+        p->name = (char*)name;
         return p;
     }
 
