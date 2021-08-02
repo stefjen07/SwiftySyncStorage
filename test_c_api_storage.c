@@ -1,6 +1,10 @@
 #include "c-api-storage.h"
 #include <stdio.h>
+#ifdef _WIN32
 #include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 
 int main() {
     for(int i=0;i<10000;i++) {
@@ -26,6 +30,10 @@ int main() {
         free(child);
         free(field);
     }
+#ifdef _WIN32
     Sleep(5000);
+#else
+    usleep(5000);
+#endif
     return 0;
 }
