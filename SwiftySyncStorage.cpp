@@ -136,7 +136,7 @@ void Document::save() {
 void Collection::read() {
 	string url = collectionUrl();
 	if (!fs::exists(url)) {
-	    cout << url << "doesn't exist\n";
+	    cout << url << " doesn't exist\n";
 	    return;
 	}
 	for (auto& entry : fs::directory_iterator(url)) {
