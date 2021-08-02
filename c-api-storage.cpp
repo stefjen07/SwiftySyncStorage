@@ -2,12 +2,21 @@
 #include "SwiftySyncStorage.h"
 #include <malloc.h>
 
+void free(CField* field) {
+    free(field->name);
+    free(field->str_value);
+    for(int i=0;i<field->children_size;i++) {
+        free(&field->children[i]);
+    }
+    free(field);
+}
+
 struct CField* CField_fromField(Field* field) {
     struct CField* p = new CField();
-    p->name = field->name.c_str();
+    p->name = (char*)field->name.c_str();
     p->float_value = field->floatValue;
     p->num_value = field->numValue;
-    p->str_value = field->strValue.c_str();
+    p->str_value = (char*)field->strValue.c_str();
     p->type = CFieldType(field->type);
 
     size_t children_size = field->children.size();
@@ -35,6 +44,15 @@ Field* Field_fromCField(CField* cfield) {
     return p;
 }
 
+char* c_str_from_string(std::string str) {
+    char* result = (char*)malloc(sizeof(char) * (str.size()+1));
+    for(int i=0;i<str.size();i++) {
+        result[i] = str[i];
+    }
+    result[str.size()] = '\0';
+    return result;
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -55,28 +73,33 @@ extern "C" {
         field->children_size = new_size;
     }
 
-    const char* encode(CField* field) {
+    char* encode(CField* field) {
         JSONEncoder encoder;
         auto container = encoder.container();
         container.encode(*Field_fromCField(field));
-        static std::string str = container.content;
-        return str.c_str();
+        std::string str = container.content;
+        return c_str_from_string(str);
     }
 
     void copy(CField* toField, CField* cfield) {
-        toField->children = cfield->children;
+        size_t children_bytes = sizeof(CField) * cfield->children_size;
+        CField* children = (CField*)malloc(children_bytes);
+        for(int i=0;i<cfield->children_size;i++) {
+            copy(&children[i], &cfield->children[i]);
+        }
+        toField->children = children;
         toField->type = cfield->type;
-        toField->name = cfield->name;
+        toField->name = c_str_from_string(cfield->name);
         toField->children_size = cfield->children_size;
         toField->float_value = cfield->float_value;
         toField->num_value = cfield->num_value;
-        toField->str_value = cfield->str_value;
+        toField->str_value = c_str_from_string(cfield->str_value);
     }
 
     void decode(CField* field, const char* content) {
         JSONDecoder decoder;
         auto container = decoder.container(content);
-        static auto decodedField = container.decode(Field());
+        auto decodedField = container.decode(Field());
         copy(field, CField_fromField(&decodedField));
     }
 
@@ -92,7 +115,7 @@ extern "C" {
         return p;
     }
 
-    struct CField* CField_new(CFieldType type, const char* name) {
+    struct CField* CField_new(CFieldType type, char* name) {
         CField* p = new CField();
         p->type = type;
         p->name = name;

@@ -1,6 +1,7 @@
 #ifndef SWIFTYSYNCSTORAGE_C_API_STORAGE_H
 #define SWIFTYSYNCSTORAGE_C_API_STORAGE_H
 
+
 #include <stddef.h>
 
 #ifdef __cplusplus
@@ -17,10 +18,10 @@ extern "C" {
 
     struct CField {
         enum CFieldType type;
-        const char* name;
+        char* name;
         long long num_value;
         double float_value;
-        const char* str_value;
+        char* str_value;
         struct CField* children;
         size_t children_size;
     };
@@ -28,11 +29,11 @@ extern "C" {
     struct CField* get_child(struct CField* field, const char* key);
     void copy(struct CField* toField, struct CField* cfield);
     void add_child(struct CField* field, struct CField child);
-    const char* encode(struct CField* field);
+    char* encode(struct CField* field);
     void decode(struct CField* field, const char* content);
 
     struct CField* CField_empty();
-    struct CField* CField_new(enum CFieldType type, const char* name);
+    struct CField* CField_new(enum CFieldType type, char* name);
 
 #ifdef __cplusplus
 }
