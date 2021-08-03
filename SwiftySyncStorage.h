@@ -27,7 +27,6 @@
 #include <experimental/filesystem>
 
 namespace fs = std::experimental::filesystem;
-using namespace std;
 
 enum class FieldType {
 	boolean = 0,
@@ -40,13 +39,13 @@ enum class FieldType {
 class Field : public Codable {
 public:
 	FieldType type;
-	string name;
+	std::string name;
 	long long numValue;
 	double floatValue;
-	string strValue;
-	vector<Field> children;
+	std::string strValue;
+	std::vector<Field> children;
 
-	Field* operator [](string key);
+	Field* operator [](std::string key);
 
 	void addChild(Field child);
 
@@ -56,7 +55,7 @@ public:
 
 	Field() {}
 
-	Field(FieldType type, string name) {
+	Field(FieldType type, std::string name) {
 		this->type = type;
 		this->name = name;
 	}
@@ -66,18 +65,18 @@ class Collection;
 
 class Document {
 public:
-	string name;
-	vector<Field> fields;
+	std::string name;
+	std::vector<Field> fields;
 	Collection* collection;
 
-	string documentUrl();
+	std::string documentUrl();
 
-	Field* operator [](string name);
+	Field* operator [](std::string name);
 
 	void read();
 	void save();
 
-	Document(Collection* collection, string name) {
+	Document(Collection* collection, std::string name) {
 		this->name = name;
 		this->collection = collection;
 	}
@@ -91,33 +90,33 @@ class SwiftyServer;
 
 class Collection {
 public:
-	string name;
-	vector<Document> documents;
+	std::string name;
+	std::vector<Document> documents;
 #ifdef SERVER
 	SwiftyServer* server;
 #endif
 
-	string collectionUrl();
+	std::string collectionUrl();
 
-	function<void()> onDocumentCreating = []() {};
+	std::function<void()> onDocumentCreating = []() {};
 
-	Document* operator [](string name);
+	Document* operator [](std::string name);
 
-	bool isDocumentNameTaken(string name);
+	bool isDocumentNameTaken(std::string name);
 
 	void read();
 	void save();
-	void createDocument(string name);
+	void createDocument(std::string name);
 
 #ifdef SERVER
-	Collection(SwiftyServer* server, string name) {
+	Collection(SwiftyServer* server, std::string name) {
 		this->name = name;
 		this->server = server;
 	}
 #endif
 
 #ifdef CLIENT
-	Collection(string name) {
+	Collection(std::string name) {
 		this->name = name;
 	}
 #endif

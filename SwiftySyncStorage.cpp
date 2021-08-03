@@ -1,5 +1,6 @@
 #include "SwiftySyncStorage.h"
 #include <iostream>
+using namespace std;
 
 Field* Field::operator [](string key) {
     for (int i = 0; i < children.size(); i++) {
