@@ -1,6 +1,6 @@
 #include "c_api_storage.h"
-#include "c_api_storage_helper.h"
-#include "SwiftySyncStorage.h"
+#include "c_api_storage_helper.hpp"
+#include "SwiftySyncStorage.hpp"
 #include <stdlib.h>
 
 void free(CField* field) {

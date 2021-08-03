@@ -1,4 +1,4 @@
-#include "SwiftySyncStorage.h"
+#include "SwiftySyncStorage.hpp"
 #include <iostream>
 using namespace std;
 

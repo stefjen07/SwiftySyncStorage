@@ -1,5 +1,5 @@
 #include "c_api_storage.h"
-#include "SwiftySyncStorage.h"
+#include "SwiftySyncStorage.hpp"
 using namespace std;
 
 struct CField* CField_fromField(Field* field) {

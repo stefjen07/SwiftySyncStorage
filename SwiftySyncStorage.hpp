@@ -19,8 +19,8 @@
 #define FUNCTION_REQUEST_PREFIX "FR"
 #define DOCUMENT_EXTENSION "document"
 
-#include "Codable.h"
-#include "JSON.h"
+#include "Codable.hpp"
+#include "JSON.hpp"
 #include <string>
 #include <functional>
 #include <fstream>

@@ -9,11 +9,11 @@ if (NOT TARGET SwiftySyncStorage)
 
     include_directories(/)
 
-    add_library(SwiftySyncStorage SwiftySyncStorage.cpp SwiftySyncStorage.h)
+    add_library(SwiftySyncStorage SwiftySyncStorage.cpp SwiftySyncStorage.hpp)
     target_link_libraries(SwiftySyncStorage SwiftySyncCommon Codable)
     target_include_directories(SwiftySyncStorage PUBLIC SwiftySyncCommon PUBLIC SwiftySyncCommon/CodablePP)
 
-    add_library(c_api_storage_helper c_api_storage_helper.cpp c_api_storage_helper.h)
+    add_library(c_api_storage_helper c_api_storage_helper.cpp c_api_storage_helper.hpp)
     target_link_libraries(c_api_storage_helper SwiftySyncStorage)
 
     add_library(c_api_storage c_api_storage.cpp c_api_storage.h)
