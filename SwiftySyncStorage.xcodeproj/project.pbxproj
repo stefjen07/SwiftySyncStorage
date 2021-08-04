@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E14F9B626BB0D1A009ECD69 /* c_api_storage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9B226BB0D1A009ECD69 /* c_api_storage.cpp */; };
-		3E14F9C026BB0DEF009ECD69 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F9BF26BB0DEF009ECD69 /* main.swift */; };
+		3EEC267026AC8E8F0035C489 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC266E26AC8E8F0035C489 /* main.cpp */; };
+		3EEC267426AC8EE90035C489 /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EEC267326AC8EE90035C489 /* JSON.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,21 +24,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3E14F9B226BB0D1A009ECD69 /* c_api_storage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = c_api_storage.cpp; sourceTree = "<group>"; };
-		3E14F9B326BB0D1A009ECD69 /* SwiftySyncStorage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SwiftySyncStorage.hpp; sourceTree = "<group>"; };
-		3E14F9B426BB0D1A009ECD69 /* c_api_storage_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = c_api_storage_helper.hpp; sourceTree = "<group>"; };
-		3E14F9B526BB0D1A009ECD69 /* c_api_storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_api_storage.h; sourceTree = "<group>"; };
-		3E14F9B726BB0D32009ECD69 /* Request.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Request.hpp; path = SwiftySyncCommon/Request.hpp; sourceTree = "<group>"; };
-		3E14F9B826BB0D32009ECD69 /* Data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Data.hpp; path = SwiftySyncCommon/Data.hpp; sourceTree = "<group>"; };
-		3E14F9B926BB0D32009ECD69 /* Functions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Functions.hpp; path = SwiftySyncCommon/Functions.hpp; sourceTree = "<group>"; };
-		3E14F9BA26BB0D32009ECD69 /* UUID.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UUID.hpp; path = SwiftySyncCommon/UUID.hpp; sourceTree = "<group>"; };
-		3E14F9BB26BB0D3E009ECD69 /* Codable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Codable.hpp; path = SwiftySyncCommon/CodablePP/Codable.hpp; sourceTree = "<group>"; };
-		3E14F9BC26BB0D3E009ECD69 /* JSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSON.hpp; path = SwiftySyncCommon/CodablePP/JSON.hpp; sourceTree = "<group>"; };
-		3E14F9BE26BB0DEE009ECD69 /* SwiftySyncStorage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftySyncStorage-Bridging-Header.h"; sourceTree = "<group>"; };
-		3E14F9BF26BB0DEF009ECD69 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3EEC266326AC8E5F0035C489 /* SwiftySyncStorage */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftySyncStorage; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEC266D26AC8E8F0035C489 /* Usage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usage.h; sourceTree = "<group>"; };
 		3EEC266E26AC8E8F0035C489 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3EEC266F26AC8E8F0035C489 /* SwiftySyncStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftySyncStorage.h; sourceTree = "<group>"; };
+		3EEC267126AC8EE90035C489 /* Codable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Codable.h; path = CodablePP/Codable.h; sourceTree = "<group>"; };
+		3EEC267226AC8EE90035C489 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = CodablePP/JSON.h; sourceTree = "<group>"; };
+		3EEC267326AC8EE90035C489 /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = CodablePP/JSON.cpp; sourceTree = "<group>"; };
+		3EEC267526AC8F900035C489 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Data.h; path = SwiftySyncCommon/Data.h; sourceTree = "<group>"; };
+		3EEC267626AC8F900035C489 /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUID.h; path = SwiftySyncCommon/UUID.h; sourceTree = "<group>"; };
+		3EEC267726AC8F900035C489 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Functions.h; path = SwiftySyncCommon/Functions.h; sourceTree = "<group>"; };
+		3EEC267826AC8F900035C489 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Request.h; path = SwiftySyncCommon/Request.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,21 +51,17 @@
 		3EEC265A26AC8E5E0035C489 = {
 			isa = PBXGroup;
 			children = (
-				3E14F9BF26BB0DEF009ECD69 /* main.swift */,
-				3E14F9BB26BB0D3E009ECD69 /* Codable.hpp */,
-				3E14F9BC26BB0D3E009ECD69 /* JSON.hpp */,
-				3E14F9B826BB0D32009ECD69 /* Data.hpp */,
-				3E14F9B926BB0D32009ECD69 /* Functions.hpp */,
-				3E14F9B726BB0D32009ECD69 /* Request.hpp */,
-				3E14F9BA26BB0D32009ECD69 /* UUID.hpp */,
-				3E14F9B426BB0D1A009ECD69 /* c_api_storage_helper.hpp */,
-				3E14F9B226BB0D1A009ECD69 /* c_api_storage.cpp */,
-				3E14F9B526BB0D1A009ECD69 /* c_api_storage.h */,
-				3E14F9B326BB0D1A009ECD69 /* SwiftySyncStorage.hpp */,
+				3EEC267526AC8F900035C489 /* Data.h */,
+				3EEC267726AC8F900035C489 /* Functions.h */,
+				3EEC267826AC8F900035C489 /* Request.h */,
+				3EEC267626AC8F900035C489 /* UUID.h */,
+				3EEC267126AC8EE90035C489 /* Codable.h */,
+				3EEC267326AC8EE90035C489 /* JSON.cpp */,
+				3EEC267226AC8EE90035C489 /* JSON.h */,
 				3EEC266E26AC8E8F0035C489 /* main.cpp */,
+				3EEC266F26AC8E8F0035C489 /* SwiftySyncStorage.h */,
 				3EEC266D26AC8E8F0035C489 /* Usage.h */,
 				3EEC266426AC8E5F0035C489 /* Products */,
-				3E14F9BE26BB0DEE009ECD69 /* SwiftySyncStorage-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,7 +104,6 @@
 				TargetAttributes = {
 					3EEC266226AC8E5F0035C489 = {
 						CreatedOnToolsVersion = 13.0;
-						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -139,8 +130,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E14F9C026BB0DEF009ECD69 /* main.swift in Sources */,
-				3E14F9B626BB0D1A009ECD69 /* c_api_storage.cpp in Sources */,
+				3EEC267026AC8E8F0035C489 /* main.cpp in Sources */,
+				3EEC267426AC8EE90035C489 /* JSON.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,37 +252,20 @@
 		3EEC266B26AC8E5F0035C489 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4TJY8UCM7;
 				ENABLE_HARDENED_RUNTIME = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftySyncStorage-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		3EEC266C26AC8E5F0035C489 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4TJY8UCM7;
 				ENABLE_HARDENED_RUNTIME = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftySyncStorage-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
