@@ -24,6 +24,7 @@ char* c_str_from_string(std::string str) {
 #ifdef __cplusplus
 extern "C" {
 #endif
+    #include <string.h>
 
     struct CField* get_child(CField* field, const char* key) {
         for(size_t i=0;i<field->children_size;i++) {
