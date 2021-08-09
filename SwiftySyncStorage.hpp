@@ -27,11 +27,12 @@
 
 #if defined(__cpp_lib_filesystem)
 #include <filesystem>
+namespace fs = std::filesystem;
 #elif defined(__cpp_lib_experimental_filesystem)
 #include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
 #endif
 
-namespace fs = std::experimental::filesystem;
 
 enum class FieldType {
 	boolean = 0,
