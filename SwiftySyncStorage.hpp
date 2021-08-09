@@ -24,7 +24,12 @@
 #include <string>
 #include <functional>
 #include <fstream>
+
+#if defined(__cpp_lib_filesystem)
+#include <filesystem>
+#elif defined(__cpp_lib_experimental_filesystem)
 #include <experimental/filesystem>
+#endif
 
 namespace fs = std::experimental::filesystem;
 
