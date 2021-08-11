@@ -1,3 +1,4 @@
+#define CLIENT
 #include "SwiftySyncStorage.h"
 #include <iostream>
 using namespace std;

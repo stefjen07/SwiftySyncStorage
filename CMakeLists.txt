@@ -7,21 +7,21 @@ if (NOT TARGET SwiftySyncStorage)
 
     add_subdirectory(SwiftySyncCommon)
 
-    include_directories(/)
+    include_directories(include)
 
-    add_library(SwiftySyncStorage SwiftySyncStorage.cpp SwiftySyncStorage.hpp)
+    add_library(SwiftySyncStorage src/SwiftySyncStorage.cpp include/SwiftySyncStorage.hpp)
     target_link_libraries(SwiftySyncStorage SwiftySyncCommon Codable)
-    target_include_directories(SwiftySyncStorage PUBLIC SwiftySyncCommon PUBLIC SwiftySyncCommon/CodablePP)
+    target_include_directories(SwiftySyncStorage PUBLIC SwiftySyncCommon/include PUBLIC SwiftySyncCommon/CodablePP/include)
 
-    add_library(c_api_storage_helper c_api_storage_helper.cpp c_api_storage_helper.hpp)
+    add_library(c_api_storage_helper src/c_api_storage_helper.cpp include/c_api_storage_helper.hpp)
     target_link_libraries(c_api_storage_helper SwiftySyncStorage)
 
-    add_library(c_api_storage c_api_storage.cpp c_api_storage.h)
+    add_library(c_api_storage src/c_api_storage.cpp include/c_api_storage.h)
     target_link_libraries(c_api_storage SwiftySyncStorage c_api_storage_helper)
 
-    #add_executable(test_storage main.cpp)
-    #target_link_libraries(test_storage SwiftySyncStorage)
+    add_executable(test_storage test/test.cpp)
+    target_link_libraries(test_storage SwiftySyncStorage)
 
-    #add_executable(test_c_api_storage test_c_api_storage.c)
-    #target_link_libraries(test_c_api_storage c_api_storage)
+    add_executable(test_c_api_storage test/test_c_api_storage.c)
+    target_link_libraries(test_c_api_storage c_api_storage)
 endif()
