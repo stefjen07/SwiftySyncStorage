@@ -19,9 +19,9 @@ if (NOT TARGET SwiftySyncStorage)
     add_library(c_api_storage src/c_api_storage.cpp include/c_api_storage.h)
     target_link_libraries(c_api_storage SwiftySyncStorage c_api_storage_helper)
 
-    add_executable(test_storage test/test.cpp)
-    target_link_libraries(test_storage SwiftySyncStorage)
+    #add_executable(test_storage test/test.cpp)
+    #target_link_libraries(test_storage SwiftySyncStorage)
 
-    add_executable(test_c_api_storage test/test_c_api_storage.c)
-    target_link_libraries(test_c_api_storage c_api_storage)
+    #add_executable(test_c_api_storage test/test_c_api_storage.c)
+    #target_link_libraries(test_c_api_storage c_api_storage)
 endif()

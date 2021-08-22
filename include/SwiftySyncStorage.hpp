@@ -22,13 +22,14 @@
 #include <string>
 #include <functional>
 #include <fstream>
+#include <iostream>
 
-#if defined(__cpp_lib_filesystem)
-#include <filesystem>
-namespace fs = std::filesystem;
-#elif defined(__cpp_lib_experimental_filesystem)
+#ifdef __cpp_lib_experimental_filesystem
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::__fs::filesystem;
 #endif
 
 
@@ -125,5 +126,77 @@ public:
 	}
 #endif
 };
+
+#ifdef SERVER
+void Collection::save() {
+    if (name.empty()) {
+        return;
+    }
+    std::string url = collectionUrl();
+    url.erase(url.end() - 1);
+    fs::create_directory(url);
+    for (auto document : documents) {
+        document.save();
+    }
+}
+
+std::string Document::documentUrl() {
+    return collection->collectionUrl() + "/" + name + "." + DOCUMENT_EXTENSION;
+}
+
+void Document::read() {
+    std::ifstream documentStream(documentUrl());
+    std::string content;
+    getline(documentStream, content);
+    auto decoder = JSONDecoder();
+    auto container = decoder.container(content);
+    auto decoded = container.decode(std::vector<Field>());
+    this->fields = decoded;
+}
+
+void Document::save() {
+    std::ofstream documentStream(documentUrl());
+    auto encoder = JSONEncoder();
+    auto container = encoder.container();
+    container.encode(fields);
+    documentStream << container.content;
+}
+
+void Collection::read() {
+    std::string url = collectionUrl();
+    if (!fs::exists(url)) {
+        std::cout << url << " doesn't exist\n";
+        return;
+    }
+    for (auto& entry : fs::directory_iterator(url)) {
+        std::string filename = entry.path().stem().string();
+        createDocument(filename);
+    }
+    for (int i = 0; i < documents.size(); i++) {
+        documents[i].read();
+    }
+}
+
+#else
+void Collection::save() {
+    return;
+}
+
+std::string Document::documentUrl() {
+    return "";
+}
+
+void Document::read() {
+    return;
+}
+
+void Document::save() {
+    return;
+}
+
+void Collection::read() {
+    return;
+}
+#endif
 
 #endif
