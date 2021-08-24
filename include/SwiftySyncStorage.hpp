@@ -74,12 +74,31 @@ public:
 	std::vector<Field> fields;
 	Collection* collection;
 
+#ifdef CLIENT
+    std::string documentUrl() {
+        return "";
+    }
+#else
 	std::string documentUrl();
+#endif
 
 	Field* operator [](std::string name);
 
+#ifdef CLIENT
+	void read() {
+	    return;
+	}
+#else
 	void read();
+#endif
+
+#ifdef CLIENT
+	void save() {
+	    return;
+	}
+#else
 	void save();
+#endif
 
 	Document(Collection* collection, std::string name) {
 		this->name = name;
@@ -109,8 +128,21 @@ public:
 
 	bool isDocumentNameTaken(std::string name);
 
+#ifdef CLIENT
+	void read() {
+	    return;
+	}
+#else
 	void read();
+#endif
+
+#ifdef CLIENT
+    void save() {
+        return;
+    }
+#else
 	void save();
+#endif
 	void createDocument(std::string name);
 
 #ifdef SERVER
@@ -126,27 +158,5 @@ public:
 	}
 #endif
 };
-
-#ifdef CLIENT
-void Collection::save() {
-    return;
-}
-
-std::string Document::documentUrl() {
-    return "";
-}
-
-void Document::read() {
-    return;
-}
-
-void Document::save() {
-    return;
-}
-
-void Collection::read() {
-    return;
-}
-#endif
 
 #endif
