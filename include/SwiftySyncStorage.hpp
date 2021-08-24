@@ -24,12 +24,12 @@
 #include <fstream>
 #include <iostream>
 
-#ifdef __cpp_lib_experimental_filesystem
+#ifdef __cpp_lib__filesystem
+#include <filesystem>
+namespace fs = std::filesystem;
+#else
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
-#else
-#include <filesystem>
-namespace fs = std::__fs::filesystem;
 #endif
 
 
