@@ -34,6 +34,8 @@ extern "C" {
 
     struct CField* CField_empty();
     struct CField* CField_new(enum CFieldType type, const char* name);
+    struct CField* CField_parse(const char* data);
+    const char* CField_get_data(struct CField* field);
 
 #ifdef __cplusplus
 }

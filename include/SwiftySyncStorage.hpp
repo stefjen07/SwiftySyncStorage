@@ -19,6 +19,7 @@
 
 #include "Codable.hpp"
 #include "JSON.hpp"
+#include <Data.hpp>
 #include <string>
 #include <functional>
 #include <fstream>
@@ -64,6 +65,10 @@ public:
 		this->type = type;
 		this->name = name;
 	}
+
+	void parseData(DataUnit data);
+
+	DataUnit getData();
 };
 
 class Collection;

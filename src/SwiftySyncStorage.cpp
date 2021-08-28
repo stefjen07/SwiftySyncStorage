@@ -97,3 +97,27 @@ void Collection::createDocument(string name) {
         onDocumentCreating();
     }
 }
+
+void Field::parseData(DataUnit data) {
+    JSONDecoder decoder;
+    string dataFlat;
+    for(int i=0;i<data.bytes.size();i++) {
+        dataFlat += data.bytes[i];
+    }
+    auto container = decoder.container(dataFlat);
+    auto coderContainer = (CoderContainer*) dynamic_cast<CoderContainer*>(&container);
+    decode(coderContainer);
+}
+
+DataUnit Field::getData() {
+    JSONEncoder encoder;
+    auto container = encoder.container();
+    auto coderContainer = (CoderContainer*) dynamic_cast<CoderContainer*>(&container);
+    encode(coderContainer);
+    DataUnit data;
+    container.generateContent();
+    for(int i=0;i<container.content.size();i++) {
+        data.bytes.push_back(container.content[i]);
+    }
+    return data;
+}

@@ -2,6 +2,7 @@
 #include "c_api_storage_helper.hpp"
 #include "SwiftySyncStorage.hpp"
 #include <stdlib.h>
+#include <vector>
 
 void free(CField* field) {
     free(field->name);
@@ -89,6 +90,26 @@ extern "C" {
         p->type = type;
         p->name = (char*)name;
         return p;
+    }
+
+    struct CField* CField_parse(const char* data) {
+        Field* field = new Field();
+        std::vector<char> bytes;
+        for(int i=0;i<strlen(data);i++) {
+            bytes.push_back(data[i]);
+        }
+        field->parseData(DataUnit(bytes));
+        return CField_fromField(field);
+    }
+
+    const char* CField_get_data(struct CField* field) {
+        Field* field1 = Field_fromCField(field);
+        auto bytes = field1->getData().bytes;
+        std::string flat;
+        for(int i=0;i<bytes.size();i++) {
+            flat += bytes[i];
+        }
+        return flat.c_str();
     }
 
 #ifdef __cplusplus
